@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ToDoList</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+    
+  </head>
+
+  <body>
+
+	<nav class="navbar navbar-dark bg-dark">
+	  <%= link_to 'ToDoList', root_path, class: "navbar-brand" %>
+
+	  <div class="right">
+	  		<% if user_signed_in? %>
+	  			<%= link_to 'Log Out', destroy_user_session_path, method: :delete%>
+	  		<% else %>
+	  			<%= link_to 'Log In', new_user_session_path%>
+	  		<% end %>
+	  </div>
+	</nav>
+
+	<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+	<div id="content">
+		<div class="container">
+	    	<%= yield %>
+	    </div>
+	</div>
+
+  </body>
+
+</html>
