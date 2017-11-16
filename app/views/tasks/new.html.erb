@@ -1,5 +1,24 @@
 <%= form_with(model: [@list, @list.task.build], local: true) do |form| %>
 
+	<% if @task.errors.any? %>
+
+		<div id="error explanation">
+
+			<h2>
+				<%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:
+			</h2>
+
+			<ul>
+				<% @task.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+
+		</div>
+
+	<% end %>
+
+
 	<p>
 		<%= form.label :body %><br>
 		<%= form.text_area :body %>

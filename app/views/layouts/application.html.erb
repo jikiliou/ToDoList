@@ -25,11 +25,22 @@
 	  </div>
 	</nav>
 
-	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+	<div class="container text-center mx-auto pt-2">
+		<% if not notice.nil? %>
+			<div class="alert alert-primary" role="alert">
+				<%= notice %>
+			</div>
+		<% end %>
 
-	<div id="content">
-		<div class="container">
+		<% if not alert.nil? %>
+			<div class="alert alert-danger" role="alert">
+		    	<%= alert %>
+		    </div>
+		<% end %>
+	</div>
+
+	<div id="content ">
+		<div class="container pt-4">
 	    	<%= yield %>
 	    </div>
 	</div>

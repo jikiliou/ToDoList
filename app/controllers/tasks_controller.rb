@@ -4,13 +4,18 @@ class TasksController < ApplicationController
 
 	def new
 		@list = List.find(params[:list_id])
+		@task = Task.new
 	end
 
 	def create
 		@list = List.find(params[:list_id])
-		@task = @list.task.create(task_params)
+		@task = @list.task.new(task_params)
 
-		redirect_to list_path(@list)
+		if @task.save
+			redirect_to list_path(@list)
+		else
+			render 'new'
+		end
 	end
 
 	def destroy
@@ -18,7 +23,12 @@ class TasksController < ApplicationController
 		@task = @list.task.find(params[:id])
 		@task.destroy
 
-		redirect_to list_path(@list)
+		if @list.task.count == 0
+			@list.destroy
+			redirect_to lists_path, notice: "Task and List Deleted with success"
+		else
+			redirect_to list_path(@list), notice: "Task Deleted with success"
+		end
 	end
 
 

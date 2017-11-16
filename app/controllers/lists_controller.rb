@@ -10,10 +10,6 @@ class ListsController < ApplicationController
 		@list = List.new
 	end
 
-	def edit
-
-	end
-
 	def show
 		@list = List.find(params[:id])
 		list = @list
@@ -30,13 +26,6 @@ class ListsController < ApplicationController
 		end
 	end
 
-	def update
-
-	end
-
-	def destroy
-
-	end
 
 	private	
 		def list_params
