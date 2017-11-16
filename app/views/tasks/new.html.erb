@@ -1,31 +1,35 @@
-<%= form_with(model: [@list, @list.task.build], local: true) do |form| %>
+<div class="text-center">
 
-	<% if @task.errors.any? %>
+	<%= form_with(model: [@list, @list.task.build], local: true) do |form| %>
 
-		<div id="error explanation">
+		<% if @task.errors.any? %>
 
-			<h2>
-				<%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:
-			</h2>
+			<div id="error explanation">
 
-			<ul>
-				<% @task.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
-				<% end %>
-			</ul>
+				<h2>
+					<%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:
+				</h2>
 
-		</div>
+				<ul>
+					<% @task.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+
+			</div>
+
+		<% end %>
+
+
+		<p>
+			<%= form.label :body %><br>
+			<%= form.text_area :body %>
+		</p>
+
+		<p>
+			<%= form.submit %>
+	 	</p>
 
 	<% end %>
 
-
-	<p>
-		<%= form.label :body %><br>
-		<%= form.text_area :body %>
-	</p>
-
-	<p>
-		<%= form.submit %>
- 	</p>
-
-<% end %>
+</div>
