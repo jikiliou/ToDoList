@@ -9,3 +9,11 @@ Use Devise for the authentification.
 Bootstrap for some basic front-end.
 
 Rspec for testing.
+
+
+To run:
+
+bundle install
+rails db:migrate
+rails server
+
