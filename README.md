@@ -13,7 +13,10 @@ Rspec for testing.
 
 To run:
 
+
 bundle install
+
 rails db:migrate
+
 rails server
 
